@@ -143,13 +143,13 @@ class LadderNetwork(nn.Module):
 					self.z_hat_bn[l][i] = self.z_hat[l][i]
 				else:
 					self.z_hat_bn[l][i] = (self.z_hat[l][i] - self.means[l]) / self.stds[l]
-		#return self.z_hat[0]
+		return self.z_hat[0]
 
 	def forward(self, x):
 		self.batch_size = x.size()[0]
 		y, y_noise = self.encoder(x)
-		self.decoder(y)
-		return y
+		z_hat = self.decoder(y)
+		return y, z_hat
 
 	def unsup_cost(self):
 		# unsupervised denoising reconstruction cost
