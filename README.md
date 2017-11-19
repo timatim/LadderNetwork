@@ -1,2 +1,2 @@
-# ladder_pytorch_MNIST
+# Ladder Network
 Implementation of ladder network with pytorch
